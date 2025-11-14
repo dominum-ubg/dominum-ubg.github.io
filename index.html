@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dominum UBG</title>
+<style>
+  :root {
+    --bg-color: #7743FF;
+    --card-color: #1c1c1c;
+    --header-color: #0b0b0b;
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg-color);
+    color: #fff;
+    text-align: center;
+  }
+
+  .top {
+    padding: 20px;
+  }
+
+  .top h1 {
+    margin: 0 0 6px;
+    font-size: 28px;
+  }
+
+  .top p {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.9;
+  }
+
+  #controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  #searchBox {
+    width: 100%;
+    margin-left: 1cm;
+    margin-right: 1cm;
+    max-width: auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+  }
+
+  #gameCount {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+
+  .wrap {
+    padding: 15px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .card {
+    background: var(--card-color);
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .card h3 {
+    font-size: 15px;
+    margin: 8px 0 0;
+  }
+
+  #viewerOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  #viewerWindow {
+    width: 90vw;
+    height: 90vh;
+    max-width: 1200px;
+    background: #000;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  #viewerHeader {
+    background: var(--header-color);
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #viewerFrame {
+    flex: 1;
+    border: none;
+  }
+
+  #closeBtn, #newTabBtn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  #newTabBtn {
+    background: #4caf50;
+    color: #fff;
+    margin-right: 8px;
+  }
+
+  #closeBtn {
+    background: #ff5b5b;
+    color: #fff;
+  }
+
+  @media (max-width: 600px) {
+    #controls {
+      flex-direction: column;
+      gap: 8px;
+    }
+    .card img {
+      height: 110px;
+    }
+    #viewerWindow {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+    
+      a {
+      position: relative;
+      padding: 12px 24px;
+      background: red;
+      border-radius: 20px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 1px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+  a:hover {
+  transform: translateY(-3px) scale(0.8);
+  }
+  }
+</style>
+</head>
+<body>
+
+<div style="background: #0000BB" class="top">
+  <h1>Dominum UBG</h1>
+  <p>Created By: Dominic & Tharun9772Gaming</p>
+  </div>
+  <div style="background: #0000BB">
+  <a href="https://discord.gg/tfJUq7c9GS">Discord</a>
+  <a href="https://bloxcraft-ubg,pages.dev">More Games</a>
+  </div>
+
+
+<div  id="controls">
+    <input id="searchBox" placeholder="Search games..." />
+    </div>
+   <div>
+  <p  id="gameCount">Games: 0</p>
+  </div>
+</div>
+
+<div div style="background: red;" class="wrap">
+
+  <div div id="gameGrid" class="grid"></div>
+  <div id="status" style="display:none; padding:24px;">Loading...</div>
+</div>
+
+<div id="viewerOverlay">
+  <div id="viewerWindow">
+    <div id="viewerHeader">
+      <span id="viewerTitle">Loading...</span>
+      <div>
+        <button id="newTabBtn">New Tab</button>
+        <button id="closeBtn">Close</button>
+      </div>
+    </div>
+    <iframe id="viewerFrame" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+  </div>
+</div>
+
+<script>
+const grid = document.getElementById('gameGrid');
+const overlay = document.getElementById('viewerOverlay');
+const frame = document.getElementById('viewerFrame');
+const closeBtn = document.getElementById('closeBtn');
+const newTabBtn = document.getElementById('newTabBtn');
+const status = document.getElementById('status');
+const searchBox = document.getElementById('searchBox');
+const gameCountEl = document.getElementById('gameCount');
+const viewerTitle = document.getElementById('viewerTitle');
+
+let games = [];
+let currentGameId = null;
+
+function createCard(game){
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.tabIndex = 0;
+
+  const img = document.createElement('img');
+  img.src = `https://cdn.jsdelivr.net/gh/dominum-ubg/game-covers@main/${game.id}.png`;
+  img.alt = game.name + ' cover';
+  img.onerror = ()=>{ img.src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="240"><rect width="100%" height="100%" fill="#222"/><text x="50%" y="50%" font-size="20" fill="#fff" dominant-baseline="middle" text-anchor="middle">No cover</text></svg>'; };
+
+  const title = document.createElement('h3');
+  title.textContent = game.name;
+
+  card.appendChild(img);
+  card.appendChild(title);
+
+  card.onclick = () => openGame(game.id, game.name);
+  card.onkeypress = e => { if(e.key==='Enter') openGame(game.id, game.name); };
+
+  return card;
+}
+
+async function loadGames(){
+  status.style.display = 'block';
+  status.textContent = 'Loading games...';
+  try{
+    const res = await fetch('https://cdn.jsdelivr.net/gh/dominum-ubg/assets@main/games.json', {cache:'no-store'});
+    if(!res.ok) throw new Error('Failed to fetch games');
+    const data = await res.json();
+    if(!Array.isArray(data)) throw new Error('Invalid JSON');
+    games = data;
+    grid.innerHTML = '';
+    games.forEach(g => grid.appendChild(createCard(g)));
+    gameCountEl.textContent = `Games: ${games.length}`;
+    status.style.display = 'none';
+    const params = new URLSearchParams(location.search);
+    const openId = params.get('id');
+    if(openId) openGame(openId, (games.find(x=>x.id===openId)||{}).name || openId);
+  } catch(err){
+    console.error(err);
+    status.style.display = 'block';
+    status.textContent = 'Failed to load games.';
+    games = [];
+    grid.innerHTML = '';
+    gameCountEl.textContent = 'Games: 0';
+  }
+}
+
+searchBox.addEventListener('input', ()=>{
+  const q = searchBox.value.toLowerCase().trim();
+  let visible = 0;
+  Array.from(grid.children).forEach(card=>{
+    const show = card.textContent.toLowerCase().includes(q);
+    card.style.display = show?'':'none';
+    if(show) visible++;
+  });
+  gameCountEl.textContent = `Games: ${visible}`;
+});
+
+async function openGame(id,name){
+  overlay.style.display = 'flex';
+  viewerTitle.textContent = name || id;
+  currentGameId = id;
+  try{
+    const res = await fetch(`https://cdn.jsdelivr.net/gh/dominum-ubg/games@main/${id}.html`);
+    const html = await res.text();
+    const doc = frame.contentWindow.document;
+    doc.open(); doc.write(html); doc.close();
+    const url = new URL(location.href);
+    url.searchParams.set('id', id);
+    history.replaceState({},'',url.toString());
+  }catch(err){
+    console.error(err);
+  }
+}
+
+closeBtn.onclick = () => {
+  overlay.style.display = 'none';
+  currentGameId = null;
+  frame.src='about:blank';
+  const url = new URL(location.href);
+  url.searchParams.delete('id');
+  history.replaceState({},'',url.toString());
+}
+
+newTabBtn.onclick = () => {
+  if(!currentGameId) return;
+  const win = window.open('about:blank','_blank');
+  fetch(`https://cdn.jsdelivr.net/gh/dominum-ubg/games@main/${currentGameId}.html`)
+    .then(r=>r.text())
+    .then(html=>{ win.document.open(); win.document.write(html); win.document.close(); });
+}
+
+loadGames();
+</script>
+
+</body>
+</html>
