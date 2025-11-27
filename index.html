@@ -371,7 +371,7 @@ async function loadGames(){
   } catch(err){
     console.error(err);
     status.style.display = 'block';
-    status.textContent = 'Failed to load games.';
+    status.textContent = 'ERROR: Click More Games Button To Play Somthing Else...';
     games = [];
     grid.innerHTML = '';
     gameCountEl.textContent = 'Games: 0';
@@ -384,9 +384,7 @@ searchBox.addEventListener('input', ()=>{
   Array.from(grid.children).forEach(card=>{
     const show = card.textContent.toLowerCase().includes(q);
     card.style.display = show?'':'none';
-    if(show) visible++;
-  });
-  gameCountEl.textContent = `Games: ${visible}`;
+ });
 });
 
 async function openGame(id,name){
