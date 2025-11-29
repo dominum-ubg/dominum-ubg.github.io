@@ -1,3 +1,4 @@
+// Old Script Of Dominum UBG (Laggy Verison)
 const grid = document.getElementById('gameGrid');
 const overlay = document.getElementById('viewerOverlay');
 const frame = document.getElementById('viewerFrame');
