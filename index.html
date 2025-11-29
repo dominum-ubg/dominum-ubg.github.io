@@ -13,7 +13,6 @@
     --card-color: #1c1c1c;
     --header-color: #0b0b0b;
   }
-
   body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -21,29 +20,24 @@
     color: #fff;
     text-align: center;
   }
-
   .top {
     padding: 20px;
   }
-
   .top h1 {
     margin: 0 0 6px;
     font-size: 28px;
   }
-
   .top p {
     margin: 0;
     font-size: 13px;
     opacity: 0.9;
   }
-
   #controls {
     display: flex;
     justify-content: center;
     gap: 10px;
     padding: 10px;
   }
-
   #searchBox {
     width: 100%;
     margin-left: 1cm;
@@ -54,23 +48,18 @@
     border: none;
     font-size: 16px;
   }
-
   #gameCount {
     font-size: 16px;
     font-weight: bold;
   }
-
-
   .wrap {
     padding: 15px;
   }
-
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 15px;
   }
-
   .card {
     background: var(--card-color);
     padding: 10px;
@@ -78,131 +67,101 @@
     cursor: pointer;
     transition: transform 0.15s;
   }
-
   .card:hover {
     transform: scale(1.05);
   }
-
   .card img {
     width: 100%;
     height: 120px;
     object-fit: cover;
     border-radius: 8px;
   }
-
   .card h3 {
     font-size: 15px;
     margin: 8px 0 0;
   }
-
-  /* Part of this code is from https://bloxcraft-ubg.pages.dev The Owner Of Bloxcraft UBG Is Also Owmer Of This Site. */
-      .bloxy-btn {
-      position: relative;
-      padding: 12px 24px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-radius: 12px;
-      color: #fff;
-      font-size: 18px;
-      font-weight: 700;
-      text-transform: uppercase;
-      text-decoration: none;
-      letter-spacing: 1px;
-      cursor: pointer;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      display: inline-block;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    }
-
-    .bloxy-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transition: left 0.5s ease;
-      z-index: 1;
-    }
-
-    .bloxy-btn:hover::before {
-      left: 100%;
-    }
-
-    .bloxy-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
-      border-color: rgba(255, 255, 255, 0.5);
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 0 40px rgba(139, 92, 246, 0.6),
-                  0 12px 48px rgba(0, 0, 0, 0.3);
-    }
-
-    .bloxy-btn:active {
-      transform: translateY(-1px) scale(1.02);
-    }
-
- 
-    .bloxy-orange-btn {
-      background: linear-gradient(135deg, rgba(255, 102, 0, 0.3), rgba(0, 0, 0, 0.3));
-      border-color: rgba(255, 102, 0, 0.5);
-    }
-
-    .bloxy-orange-btn:hover {
-      background: linear-gradient(135deg, rgba(255, 102, 0, 0.5), rgba(0, 0, 0, 0.5));
-      box-shadow: 0 0 40px rgba(255, 102, 0, 0.6),
-                  0 12px 48px rgba(0, 0, 0, 0.3);
-    }
-
-  
-    .bloxy-blue-btn {
-      background: rgba(0, 0, 139, 0.3);
-      border-color: rgba(0, 0, 139, 0.5);
-    }
-
-    .bloxy-blue-btn:hover {
-      background: rgba(0, 0, 139, 0.5);
-      box-shadow: 0 0 40px rgba(0, 0, 255, 0.6),
-                  0 12px 48px rgba(0, 0, 0, 0.3);
-    }
-
- 
-    .bloxy-rainbow-btn {
-      background: linear-gradient(135deg, rgba(255, 95, 109, 0.3), rgba(255, 195, 113, 0.3), rgba(71, 207, 115, 0.3), rgba(56, 249, 215, 0.3));
-      border-color: rgba(255, 95, 109, 0.5);
-      animation: rainbow-shift 3s infinite;
-    }
-
-    @keyframes rainbow-shift {
-      0%, 100% { border-color: rgba(255, 95, 109, 0.5); }
-      25% { border-color: rgba(255, 195, 113, 0.5); }
-      50% { border-color: rgba(71, 207, 115, 0.5); }
-      75% { border-color: rgba(56, 249, 215, 0.5); }
-    }
-
-    .bloxy-rainbow-btn:hover {
-      background: linear-gradient(135deg, rgba(255, 95, 109, 0.5), rgba(255, 195, 113, 0.5), rgba(71, 207, 115, 0.5), rgba(56, 249, 215, 0.5));
-      box-shadow: 0 0 50px rgba(255, 95, 109, 0.8),
-                  0 0 80px rgba(71, 207, 115, 0.4),
-                  0 12px 48px rgba(0, 0, 0, 0.3);
-    }
-
-
-    .bloxy-grn-btn {
-      background: rgba(34, 197, 94, 0.2);
-      border-color: rgba(34, 197, 94, 0.5);
-    }
-
-    .bloxy-grn-btn:hover {
-      background: rgba(34, 197, 94, 0.3);
-      box-shadow: 0 0 40px rgba(34, 197, 94, 0.6),
-                  0 12px 48px rgba(0, 0, 0, 0.3);
-    }
-  /* Part of this code is from https://bloxcraft-ubg.pages.dev COde From It Ends */
-
+  .bloxy-btn {
+    position: relative;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+  .bloxy-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+    z-index: 1;
+  }
+  .bloxy-btn:hover::before {
+    left: 100%;
+  }
+  .bloxy-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6),
+                0 12px 48px rgba(0, 0, 0, 0.3);
+  }
+  .bloxy-btn:active {
+    transform: translateY(-1px) scale(1.02);
+  }
+  .bloxy-orange-btn {
+    background: linear-gradient(135deg, rgba(255, 102, 0, 0.3), rgba(0, 0, 0, 0.3));
+    border-color: rgba(255, 102, 0, 0.5);
+  }
+  .bloxy-orange-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 102, 0, 0.5), rgba(0, 0, 0, 0.5));
+    box-shadow: 0 0 40px rgba(255, 102, 0, 0.6),
+                0 12px 48px rgba(0, 0, 0, 0.3);
+  }
+  .bloxy-blue-btn {
+    background: rgba(0, 0, 139, 0.3);
+    border-color: rgba(0, 0, 139, 0.5);
+  }
+  .bloxy-blue-btn:hover {
+    background: rgba(0, 0, 139, 0.5);
+    box-shadow: 0 0 40px rgba(0, 0, 255, 0.6),
+                0 12px 48px rgba(0, 0, 0, 0.3);
+  }
+  .bloxy-rainbow-btn {
+    background: linear-gradient(135deg, rgba(255, 95, 109, 0.3), rgba(255, 195, 113, 0.3), rgba(71, 207, 115, 0.3), rgba(56, 249, 215, 0.3));
+    border-color: rgba(255, 95, 109, 0.5);
+    animation: rainbow-shift 3s infinite;
+  }
+  @keyframes rainbow-shift {
+    0%, 100% { border-color: rgba(255, 95, 109, 0.5); }
+    25% { border-color: rgba(255, 195, 113, 0.5); }
+    50% { border-color: rgba(71, 207, 115, 0.5); }
+    75% { border-color: rgba(56, 249, 215, 0.5); }
+  }
+  .bloxy-grn-btn {
+    background: rgba(34, 197, 94, 0.2);
+    border-color: rgba(34, 197, 94, 0.5);
+  }
+  .bloxy-grn-btn:hover {
+    background: rgba(34, 197, 94, 0.3);
+    box-shadow: 0 0 40px rgba(34, 197, 94, 0.6),
+                0 12px 48px rgba(0, 0, 0, 0.3);
+  }
   #viewerOverlay {
     position: fixed;
     top: 0;
@@ -215,7 +174,6 @@
     justify-content: center;
     z-index: 1000;
   }
-
   #viewerWindow {
     width: 90vw;
     height: 90vh;
@@ -226,7 +184,6 @@
     flex-direction: column;
     overflow: hidden;
   }
-
   #viewerHeader {
     background: var(--header-color);
     padding: 8px 12px;
@@ -234,12 +191,10 @@
     justify-content: space-between;
     align-items: center;
   }
-
   #viewerFrame {
     flex: 1;
     border: none;
   }
-
   #closeBtn, #newTabBtn {
     padding: 8px 12px;
     border: none;
@@ -247,18 +202,15 @@
     cursor: pointer;
     font-size: 14px;
   }
-
   #newTabBtn {
     background: #4caf50;
     color: #fff;
     margin-right: 8px;
   }
-
   #closeBtn {
     background: #ff5b5b;
     color: #fff;
   }
-
   @media (max-width: 600px) {
     #controls {
       flex-direction: column;
@@ -272,8 +224,6 @@
       height: 100%;
       border-radius: 0;
     }
-    
-
   }
 </style>
 </head>
@@ -282,24 +232,21 @@
 <div style="background: #0000BB" class="top">
   <h1>Dominum UBG</h1>
   <p>Created By: Dominic & Tharun9772Gaming</p>
-  </div>
-  <div style="background: #0000BB">
+</div>
+<div style="background: #0000BB">
   <a target="_blank" class="bloxy-rainbow-btn bloxy-btn" href="https://discord.gg/tfJUq7c9GS">Discord</a>
   <a target="_blank" class="bloxy-rainbow-btn bloxy-btn" href="https://bloxcraft-ubg.pages.dev/games?utm_source=dominum-ubg.pages.dev">More Games</a>
-  </div>
-
-
-<div  id="controls">
-    <input id="searchBox" placeholder="Search games..." />
-    </div>
-   <div>
-  <p  id="gameCount">Games: 0</p>
-  </div>
 </div>
 
-<div div style="background: red;" class="wrap">
+<div id="controls">
+  <input id="searchBox" placeholder="Search games..." />
+</div>
+<div>
+  <p id="gameCount">Games: 0</p>
+</div>
 
-  <div div id="gameGrid" class="grid"></div>
+<div style="background: red;" class="wrap">
+  <div id="gameGrid" class="grid"></div>
   <div id="status" style="display:none; padding:24px;">Loading...</div>
 </div>
 
@@ -328,17 +275,17 @@ const gameCountEl = document.getElementById('gameCount');
 const viewerTitle = document.getElementById('viewerTitle');
 
 let games = [];
-let currentGameId = null;
+let filteredGames = [];
+let renderedCount = 0;
+const BATCH_SIZE = 30;
 
-function createCard(game){
+function createCardElement(game) {
   const card = document.createElement('div');
   card.className = 'card';
-  card.tabIndex = 0;
 
   const img = document.createElement('img');
+  img.loading = 'lazy';
   img.src = `https://cdn.jsdelivr.net/gh/dominum-ubg/game-covers@main/${game.id}.png`;
-  img.alt = game.name + ' cover';
-  img.onerror = ()=>{ img.src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="240"><rect width="100%" height="100%" fill="#222"/><text x="50%" y="50%" font-size="20" fill="#fff" dominant-baseline="middle" text-anchor="middle">No cover</text></svg>'; };
 
   const title = document.createElement('h3');
   title.textContent = game.name;
@@ -347,78 +294,81 @@ function createCard(game){
   card.appendChild(title);
 
   card.onclick = () => openGame(game.id, game.name);
-  card.onkeypress = e => { if(e.key==='Enter') openGame(game.id, game.name); };
 
   return card;
 }
 
-async function loadGames(){
+function renderMoreCards() {
+  const end = Math.min(renderedCount + BATCH_SIZE, filteredGames.length);
+  for (let i = renderedCount; i < end; i++) {
+    grid.appendChild(createCardElement(filteredGames[i]));
+  }
+  renderedCount = end;
+}
+
+async function loadGames() {
   status.style.display = 'block';
-  status.textContent = 'Loading games...';
-  try{
-    const res = await fetch('https://cdn.jsdelivr.net/gh/dominum-ubg/assets@main/games.json', {cache:'no-store'});
-    if(!res.ok) throw new Error('Failed to fetch games');
+  status.textContent = "Loading games...";
+  try {
+    const res = await fetch('https://cdn.jsdelivr.net/gh/dominum-ubg/assets@main/games.json', {cache: "no-store"});
     const data = await res.json();
-    if(!Array.isArray(data)) throw new Error('Invalid JSON');
     games = data;
-    grid.innerHTML = '';
-    games.forEach(g => grid.appendChild(createCard(g)));
+    filteredGames = [...games];
+    grid.innerHTML = "";
+    renderedCount = 0;
+    renderMoreCards();
     gameCountEl.textContent = `Games: ${games.length}`;
     status.style.display = 'none';
-    const params = new URLSearchParams(location.search);
-    const openId = params.get('id');
-    if(openId) openGame(openId, (games.find(x=>x.id===openId)||{}).name || openId);
-  } catch(err){
-    console.error(err);
-    status.style.display = 'block';
-    status.textContent = 'ERROR: Click More Games Button To Play Somthing Else...';
-    games = [];
-    grid.innerHTML = '';
-    gameCountEl.textContent = 'Games: 0';
+  } catch (e) {
+    status.textContent = "ERROR loading games.";
   }
 }
 
-searchBox.addEventListener('input', ()=>{
-  const q = searchBox.value.toLowerCase().trim();
-  let visible = 0;
-  Array.from(grid.children).forEach(card=>{
-    const show = card.textContent.toLowerCase().includes(q);
-    card.style.display = show?'':'none';
- });
+window.addEventListener('scroll', () => {
+  const bottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
+  if (bottom) renderMoreCards();
 });
 
-async function openGame(id,name){
+searchBox.addEventListener('input', () => {
+  const q = searchBox.value.toLowerCase().trim();
+  filteredGames = games.filter(g => g.name.toLowerCase().includes(q));
+  grid.innerHTML = "";
+  renderedCount = 0;
+  renderMoreCards();
+});
+
+async function openGame(id, name) {
   overlay.style.display = 'flex';
   viewerTitle.textContent = name || id;
-  currentGameId = id;
-  try{
+  try {
     const res = await fetch(`https://cdn.jsdelivr.net/gh/dominum-ubg/games@main/${id}.html`);
     const html = await res.text();
     const doc = frame.contentWindow.document;
     doc.open(); doc.write(html); doc.close();
     const url = new URL(location.href);
     url.searchParams.set('id', id);
-    history.replaceState({},'',url.toString());
-  }catch(err){
-    console.error(err);
-  }
+    history.replaceState({}, '', url.toString());
+  } catch (err) {}
 }
 
 closeBtn.onclick = () => {
   overlay.style.display = 'none';
-  currentGameId = null;
-  frame.src='about:blank';
+  frame.src = 'about:blank';
   const url = new URL(location.href);
   url.searchParams.delete('id');
-  history.replaceState({},'',url.toString());
+  history.replaceState({}, '', url.toString());
 }
 
 newTabBtn.onclick = () => {
-  if(!currentGameId) return;
-  const win = window.open('about:blank','_blank');
-  fetch(`https://cdn.jsdelivr.net/gh/dominum-ubg/games@main/${currentGameId}.html`)
-    .then(r=>r.text())
-    .then(html=>{ win.document.open(); win.document.write(html); win.document.close(); });
+  if (!viewerTitle.textContent) return;
+  const win = window.open('about:blank', '_blank');
+  fetch(`https://cdn.jsdelivr.net/gh/dominum-ubg/games@main/${viewerTitle.textContent}.html`)
+    .then(r => r.text())
+    .then(html => {
+      win.document.open();
+      win.document.write(html);
+      win.document.close();
+    });
 }
 
 loadGames();
@@ -426,3 +376,4 @@ loadGames();
 
 </body>
 </html>
+
