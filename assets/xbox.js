@@ -271,9 +271,9 @@
       <div class="xbox-control-row"><span>Click / Select</span> <span class="xbox-key-tag">RT</span></div>
       <div class="xbox-control-row"><span>Right Click</span> <span class="xbox-key-tag">LT</span></div>
       <div class="xbox-control-row"><span>Scroll Page</span> <span class="xbox-key-tag">LB / RB</span></div>
-      <div class="xbox-control-row"><span>Toggle Keyboard</span> <span class="xbox-key-tag">Y Button</span></div>
+      <div class="xbox-control-row"><span>Open Keyboard</span> <span class="xbox-key-tag">Y Button</span></div>
       <div class="xbox-control-row"><span>Navigate Keyboard</span> <span class="xbox-key-tag">D-PAD</span></div>
-      <div class="xbox-control-row"><span>Type Key</span> <span class="xbox-key-tag">A Button</span></div>
+      <div class="xbox-control-row"><span>Type Key (Keyboard)</span> <span class="xbox-key-tag">A Button</span></div>
       <div class="xbox-control-row"><span>Toggle Fullscreen</span> <span class="xbox-key-tag">X Button</span></div>
       <div class="xbox-control-row"><span>Take Screenshot</span> <span class="xbox-key-tag">View Button</span></div>
       <div class="xbox-control-row"><span>Close Menus / ESC</span> <span class="xbox-key-tag">Menu Button</span></div>
